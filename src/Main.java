@@ -6,8 +6,8 @@ public class Main {
 
         JOptionPane.showMessageDialog(null, "¡Bienvenido a la aplicación!");
 
-        String[] opciones = {"registrar", "consultar", "visualizar", "eliminar"};
-        String[] tiposVehiculo = {"automovil", "motocicleta", "camion"};
+        String[] opciones = {"Registrar", "Consultar", "Visualizar", "Eliminar"};
+        String[] tiposVehiculo = {"Automóvil", "Motocicleta", "Camión"};
 
         int respuesta;
 
@@ -27,8 +27,8 @@ public class Main {
                 case 0: {
                     int tipoVehiculo = JOptionPane.showOptionDialog(
                             null,                             // Componente padre (null para centrar en pantalla)
-                            "Seleccione el tipo de vehiculo a registrar:",         // Mensaje
-                            "Registro de vehiculo",                // Título de la ventana
+                            "Seleccione el tipo de vehículo a registrar:",         // Mensaje
+                            "Registro de vehículo",                // Título de la ventana
                             JOptionPane.DEFAULT_OPTION,       // Tipo de botones por defecto
                             JOptionPane.PLAIN_MESSAGE,     // Tipo de icono (pregunta)
                             null,                             // Icono personalizado (null para default)
@@ -36,16 +36,16 @@ public class Main {
                             tiposVehiculo[0]                       // Opción elegida por defecto al presionar Enter
                     );
 
-                    String codigo = JOptionPane.showInputDialog("Ingrese el codigo");
+                    String codigo = JOptionPane.showInputDialog("Ingrese el código");
                     String marca = JOptionPane.showInputDialog("Ingrese la marca");
-                    String modelo = JOptionPane.showInputDialog("ingrese el modelo");
-                    String anio = JOptionPane.showInputDialog("ingrese el anio");
-                    double precio = Double.parseDouble(JOptionPane.showInputDialog("ingrese el precio"));
+                    String modelo = JOptionPane.showInputDialog("Ingrese el modelo");
+                    String anio = JOptionPane.showInputDialog("Ingrese el año");
+                    double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio"));
 
                     switch (tipoVehiculo) {
                         case 0:
-                            int cantidadPuertas = Integer.parseInt(JOptionPane.showInputDialog("ingrese la cantidad de puertas"));
-                            String tipoCombustible = JOptionPane.showInputDialog("ingrese el tipo de combustible");
+                            int cantidadPuertas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de puertas"));
+                            String tipoCombustible = JOptionPane.showInputDialog("Ingrese el tipo de combustible");
 
                             Automovil automovil = new Automovil(
                                     codigo,
@@ -61,8 +61,8 @@ public class Main {
 
                             break;
                         case 1:
-                            String cilindraje = JOptionPane.showInputDialog("ingrese el cilindraje");
-                            String tipoMotocicleta = JOptionPane.showInputDialog("ingrese el tipo de motocicleta");
+                            String cilindraje = JOptionPane.showInputDialog("Ingrese el cilindraje");
+                            String tipoMotocicleta = JOptionPane.showInputDialog("Ingrese el tipo de motocicleta");
 
                             Motocicleta motocicleta = new Motocicleta(
                                     codigo,
@@ -77,8 +77,8 @@ public class Main {
                             gestorVehiculos.agregarVehiculo(motocicleta);
                             break;
                         case 2:
-                            String capacidadCarga = JOptionPane.showInputDialog("ingrese la capacidad de carga");
-                            int cantidadEjes = Integer.parseInt(JOptionPane.showInputDialog("ingrese la cantidad de ejes"));
+                            String capacidadCarga = JOptionPane.showInputDialog("Ingrese la capacidad de carga");
+                            int cantidadEjes = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de ejes"));
 
                             Camion camion = new Camion(
                                     codigo,
@@ -94,19 +94,38 @@ public class Main {
                             break;
                     }
 
-                    JOptionPane.showMessageDialog(null, "Vehiculo agregado con exito");
+                    JOptionPane.showMessageDialog(null, "Vehículo agregado con éxito");
                     break;
                 }
                 case 1: {
-                    String codigo = JOptionPane.showInputDialog("Ingrese el codigo del vehiculo que quiere consultar");
+                    String codigo = JOptionPane.showInputDialog("Ingrese el código del vehículo que quiere consultar");
 
                     Vehiculo vehiculo = gestorVehiculos.obtenerVehiculoPorCodigo(codigo);
 
                     if (vehiculo == null) {
-                        JOptionPane.showMessageDialog(null, "Vehiculo no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Vehículo no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(null, vehiculo.obtenerDetalles());
                     }
+                    break;
+                }
+                case 3: {
+                    String codigo = JOptionPane.showInputDialog("Ingrese el código del vehículo que quiere eliminar");
+
+                    Vehiculo vehiculo = gestorVehiculos.obtenerVehiculoPorCodigo(codigo);
+
+                    if (vehiculo == null) {
+                        JOptionPane.showMessageDialog(null, "Vehículo no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        boolean eliminado = gestorVehiculos.eliminarVehiculoPorCodigo(codigo);
+
+                        if (eliminado) {
+                            JOptionPane.showMessageDialog(null, "Vehículo eliminado con éxito");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No se pudo eliminar el vehículo", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                    break;
                 }
             }
 
