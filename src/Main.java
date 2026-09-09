@@ -107,6 +107,12 @@ public class Main {
                     } else {
                         JOptionPane.showMessageDialog(null, vehiculo.obtenerDetalles());
                     }
+                    break;
+                }
+                case 2: {
+                    // Aqui visualizamos los vehiculos registrados
+                    Visualizador.mostrar(gestorVehiculos.getListaVehiculos(),"Vehiculos");
+                    break;
                 }
             }
 
