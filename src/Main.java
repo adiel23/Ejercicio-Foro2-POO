@@ -9,7 +9,7 @@ public class Main {
         String[] opciones = {"Registrar", "Consultar", "Visualizar", "Eliminar"};
         String[] tiposVehiculo = {"Automóvil", "Motocicleta", "Camión"};
 
-        int respuesta;
+        int respuesta = 1;
 
         do {
             int operacionEscogida = JOptionPane.showOptionDialog(
@@ -130,18 +130,13 @@ public class Main {
                             JOptionPane.showMessageDialog(null, "No se pudo eliminar el vehículo", "Error", JOptionPane.ERROR_MESSAGE);
                         }
                     }
+                    break;
+                }
             }
-                
+
             respuesta = JOptionPane.showConfirmDialog(null, "¿Deseas continuar?");
         } while (respuesta == JOptionPane.YES_OPTION);
 
-        // 3. Confirmar una acción (retorna 0 para SÍ, 1 para NO, 2 para CANCELAR)
-        /*int respuesta = JOptionPane.showConfirmDialog(null, "¿Deseas continuar, " + nombre + "?");
 
-        if (respuesta == JOptionPane.YES_OPTION) {
-            JOptionPane.showMessageDialog(null, "Decidiste continuar.", "Resultado", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "Operación cancelada.", "Atención", JOptionPane.WARNING_MESSAGE);
-        } */
     }
 }
