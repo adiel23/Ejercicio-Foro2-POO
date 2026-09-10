@@ -109,6 +109,11 @@ public class Main {
                     }
                     break;
                 }
+                case 2: {
+                    // Aqui visualizamos los vehiculos registrados
+                    Visualizador.mostrar(gestorVehiculos.getListaVehiculos(),"Vehiculos");
+                    break;
+                }
                 case 3: {
                     String codigo = JOptionPane.showInputDialog("Ingrese el código del vehículo que quiere eliminar");
 
@@ -125,13 +130,10 @@ public class Main {
                             JOptionPane.showMessageDialog(null, "No se pudo eliminar el vehículo", "Error", JOptionPane.ERROR_MESSAGE);
                         }
                     }
-                    break;
-                }
             }
-
+                
             respuesta = JOptionPane.showConfirmDialog(null, "¿Deseas continuar?");
         } while (respuesta == JOptionPane.YES_OPTION);
-
 
         // 3. Confirmar una acción (retorna 0 para SÍ, 1 para NO, 2 para CANCELAR)
         /*int respuesta = JOptionPane.showConfirmDialog(null, "¿Deseas continuar, " + nombre + "?");

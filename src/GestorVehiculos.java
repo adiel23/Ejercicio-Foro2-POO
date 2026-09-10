@@ -19,4 +19,9 @@ public class GestorVehiculos {
                 .findFirst()
                 .orElse(null);
     }
+    //Metodo que servira para la visualizacion
+
+    public List<Vehiculo> getListaVehiculos() {
+        return vehiculos;
+    }
 }
