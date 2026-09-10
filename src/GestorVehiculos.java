@@ -24,4 +24,8 @@ public class GestorVehiculos {
     public List<Vehiculo> getListaVehiculos() {
         return vehiculos;
     }
+
+    public boolean eliminarVehiculoPorCodigo(String codigo) {
+        return vehiculos.removeIf(vehiculo -> Objects.equals(vehiculo.getCodigo(), codigo));
+    }
 }
